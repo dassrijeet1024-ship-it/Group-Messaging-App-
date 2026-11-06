@@ -27,7 +27,6 @@ def start_client(): # Main thread for the client to send messages to the server
 
         full_message = f"{name}: {message}" # Concatenating the name and message to send to the server
 
-
         f.sendall(full_message.encode()) # Sending the message to the server after encoding it to bytes
 
 def receive_messages(f, name):
@@ -42,7 +41,7 @@ def receive_messages(f, name):
                 break
 
             with threading.Lock(): # Using a lock to prevent multiple threads from printing at the same time
-                print(data.decode()) # Printing the data received from the server after decoding it to string
+                print("\r" + data.decode()) # Printing the data received from the server after decoding it to string
 
                 print(f"{name}: ", end='', flush=True) # Printing the user's name and a prompt for input without a newline
     
